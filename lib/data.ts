@@ -35,6 +35,22 @@ export const links = [
 
 export const experiencesData = [
   {
+    title: "Full Stack Developer",
+    location: "Digital Future Web Solutions, Jaipur",
+    description:
+    "Developing web applications using ReactJS, Node.js, and MySQL, focusing on building responsive interfaces, server-side logic, and managing databases efficiently."   ,
+     icon: React.createElement(FaReact),
+    date: "JUL 2024-Present",
+  },
+  {
+    title: "Full Stack Developer (Intern)",
+    location: "KavachOne Solutions Pvt Ltd.",
+    description:
+      "Contributing to web development projects using ReactJS, Node.js, and MongoDB, focusing on both frontend and backend tasks to deliver efficient and responsive applications.",
+    icon: React.createElement(CgWorkAlt),
+    date: "AUG 2024 - Present",
+  },
+  {
     title: "ReactJs Developer Intern",
     location: "Dotsquares Technologies INDIA Pvt Ltd, Jaipur",
     description:
@@ -49,14 +65,6 @@ export const experiencesData = [
       "Implemented backend logic using PHP to streamline data processing and enhance server-side performance.",
     icon: React.createElement(CgWorkAlt),
     date: "JUL 2022 - AUG 2022",
-  },
-  {
-    title: "Java Programing",
-    location: "InternPe",
-    description:
-      "Gained proficiency in Java-based technologies and tools during the internship. Strengthened problem-solving skills through debugging and optimizing Java code.",
-    icon: React.createElement(LuGraduationCap),
-    date: " JUN 2023 - JUL 2023",
   },
 ] as const;
 

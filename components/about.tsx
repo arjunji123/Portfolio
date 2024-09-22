@@ -19,15 +19,12 @@ export default function About() {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
-      I am a recent graduate with a{" "}
-        <span className="font-medium">Bachelor of Technology in Information Technology</span> from Govt. Engineering College, Ajmer. With a solid foundation in {" "}
-        <span className="font-medium">MERN stack development</span>.{" "}
-        I have hands-on experience in ReactJS, NodeJS, ExpressJS, and MongoDB. I am passionate about solving complex problems and enhancing user experiences through innovative coding practices. I <span className="underline">love</span> the
-        feeling of finally figuring out a solution to a problem.
-        {" "}I am always looking to
-        learn new technologies. I am actively seeking my first{" "}
-        <span className="font-medium">full-time position</span> as a software
-        developer. where I can apply my technical skills and enthusiasm for learning new technologies. I enjoy staying updated with the latest trends in web development and continuously expanding my skill set.
+      I am Arjun Singh Naruka, a  <span className="font-medium">MERN stack developer</span>. with a B.Tech in Information Technology from Govt. Engineering College, Ajmer. I have hands-on experience in both frontend and backend development, specializing in ReactJS, Node.js, and MySQL. Currently, I’m working as a ReactJS Developer at Digital Future Web Solutions, where I’ve developed a Telegram bot and optimized backend systems for better performance. I’m also interning at KavachOne, focusing on building tools and improving user interfaces using ReactJS.
+
+Through various internships at Dotsquares and REI Technologies, I’ve worked on several projects, including UnitradeHub and Wanderlust, improving user experience and implementing secure, scalable features. I’m passionate about creating efficient, user-friendly applications and constantly learning new technologies to enhance my skills.
+
+       
+      
       </p>
 
       <p>
