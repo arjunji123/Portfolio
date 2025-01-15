@@ -43,14 +43,6 @@ export const experiencesData = [
     date: "JUL 2024-Present",
   },
   {
-    title: "Full Stack Developer (Intern)",
-    location: "KavachOne Solutions Pvt Ltd.",
-    description:
-      "Contributing to web development projects using ReactJS, Node.js, and MongoDB, focusing on both frontend and backend tasks to deliver efficient and responsive applications.",
-    icon: React.createElement(CgWorkAlt),
-    date: "AUG 2024 - Present",
-  },
-  {
     title: "ReactJs Developer Intern",
     location: "Dotsquares Technologies INDIA Pvt Ltd, Jaipur",
     description:
@@ -70,10 +62,10 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "Get Me A Chai",
+    title: "UnitradeHub - Telegram Mini App",
     description:
-      "Developed and deployed a Patreon-like platform GetMeAChai, utilizing React and Next.js for a modern and responsive user interface.",
-    tags: ["HTML","Tailwind","JavaScript","React", "Next.js", "MongoDB"],
+      "Developed the Unitrade Hub app, enabling users to earn rewards through tasks, referrals,with features like multi-tier referrals and task-based earnings for enhanced engagement.",
+    tags: ["HTML","Tailwind","JavaScript","React", "Node.Js", "MySQL"],
     imageUrl: corpcommentImg,
   },
   {
@@ -97,9 +89,7 @@ export const skillsData = [
   "CSS",
   "Bootstrap",
   "JavaScript",
-  "TypeScript",
   "React",
-  "Next.js",
   "Node.js",
   "Rest APIs",
   "Git",

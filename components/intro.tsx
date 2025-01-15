@@ -30,15 +30,16 @@ export default function Intro() {
               duration: 0.2,
             }}
           >
-            <Image
-              src={img}
-              alt="Ricardo portrait"
-              width="192"
-              height="192"
-              quality="95"
-              priority={true}
-              className="h-19 w-22 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
-            />
+      <Image
+  src={img}
+  alt="Ricardo portrait"
+  width="192"
+  height="192"
+  quality="95"
+  priority={true}
+  className="h-48 w-48 rounded-full object-cover border-[0.25rem] border-white shadow-xl"
+/>
+
           </motion.div>
 
           <motion.span
@@ -62,10 +63,11 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Arjun.</span> I'm a{" "}
-        <span className="font-bold">full-stack developer</span> specializing in{" "}
+        <span className="font-bold">Hello, I'm Arjun</span> - a passionate {" "}
+        <span className="font-bold">Full-Stack Developer</span> specializing in{" "}
         <span className="font-bold">React.Js 
-        & Node.Js</span>  I love building dynamic, responsive web applications and continuously learning new technologies. <br />
+        & Node.Js</span> <br />  I thrive on building dynamic, responsive web applications that deliver exceptional user experiences.
+        Always eager to learn and grow, I’m excited to share my journey with you.  <br />
         <span className="font-bold">Welcome to my portfolio!</span>
       </motion.h1>
 
@@ -91,7 +93,7 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/cv.pdf"
+          href="/cv1.pdf"
           download
         >
           Download CV{" "}
