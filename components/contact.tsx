@@ -45,7 +45,7 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-ink text-white">
       <div className="mx-auto max-w-[1600px] px-5 pb-8 pt-24 sm:px-8 sm:pt-36">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
           <Reveal>
             <p className="label mb-8 opacity-60 sm:mb-12">(06) Contact</p>
             <h2 className="display text-[clamp(3rem,12vw,12rem)]">
@@ -82,12 +82,12 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="relative mx-auto flex aspect-[5/4] w-full max-w-xl items-end justify-center overflow-hidden rounded-[2rem] bg-white">
+            <div className="relative mx-auto aspect-[5/4] w-full max-w-xl overflow-hidden rounded-[2rem] bg-white">
               <span className="absolute left-5 top-5 rounded-full bg-ink px-4 py-2 font-display text-base font-extrabold tracking-[-0.02em] text-white sm:left-7 sm:top-7 sm:text-xl">
                 Say hi! 👋
               </span>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/loader.png" alt="" draggable={false} className="h-[88%] w-auto max-w-none object-contain" />
+              <img src="/loader.png" alt="" draggable={false} className="absolute bottom-0 left-1/2 h-[88%] w-auto max-w-none -translate-x-1/2 object-contain" />
             </div>
           </Reveal>
         </div>
