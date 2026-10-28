@@ -19,8 +19,6 @@ const pill = (on: boolean) =>
 const field =
   "w-full border border-white/30 bg-transparent outline-none transition placeholder:text-white/35 focus:border-white";
 
-const short = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "");
-
 export default function Contact() {
   const time = useClock();
   const [topic, setTopic] = useState<string>("");
@@ -37,19 +35,17 @@ export default function Contact() {
       message.trim(),
     ].join("\n");
 
-  // the quick-reach list on the right of the heading
-  const rows: { label: string; value: string; href?: string; external?: boolean }[] = [
-    { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
-    { label: "LinkedIn", value: short(profile.linkedin), href: profile.linkedin, external: true },
-    { label: "GitHub", value: short(profile.github), href: profile.github, external: true },
-    { label: "Resume", value: "Download PDF", href: profile.resume, external: true },
-    { label: "Based in", value: `${profile.location}${time ? ` · ${time} IST` : ""}` },
+  const pills: { label: string; href: string; external?: boolean; primary?: boolean }[] = [
+    { label: profile.email, href: `mailto:${profile.email}`, primary: true },
+    { label: "LinkedIn", href: profile.linkedin, external: true },
+    { label: "GitHub", href: profile.github, external: true },
+    { label: "Resume", href: profile.resume, external: true },
   ];
 
   return (
     <section id="contact" className="bg-ink text-white">
       <div className="mx-auto max-w-[1600px] px-5 pb-8 pt-24 sm:px-8 sm:pt-36">
-        <div className="grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16">
           <Reveal>
             <p className="label mb-8 opacity-60 sm:mb-12">(06) Contact</p>
             <h2 className="display text-[clamp(3rem,12vw,12rem)]">
@@ -60,40 +56,39 @@ export default function Contact() {
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
               A role, a project, a question or just a hello — send a note and I&apos;ll reply as soon as I can.
             </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              {pills.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noreferrer" : undefined}
+                  className={`group inline-flex items-center gap-2 rounded-full border px-5 py-3 font-display text-base font-medium tracking-tight transition sm:text-lg ${
+                    l.primary
+                      ? "break-all border-white bg-white text-ink hover:bg-white/85"
+                      : "border-white/35 hover:border-white hover:bg-white hover:text-ink"
+                  }`}
+                >
+                  {l.label}
+                  <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+                </a>
+              ))}
+            </div>
+            <p className="label mt-6 opacity-50">
+              {profile.location}
+              {time && ` · ${time} IST`}
+            </p>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <ul className="border-b border-white/20">
-              {rows.map((r) => {
-                const inner = (
-                  <>
-                    <span className="label opacity-60">{r.label}</span>
-                    <span className="break-all text-right font-display text-lg font-medium tracking-[-0.02em] sm:text-xl">
-                      {r.value}
-                      {r.href && <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">↗</span>}
-                    </span>
-                  </>
-                );
-                const cls =
-                  "flex items-baseline justify-between gap-6 border-t border-white/20 px-1 py-4 transition-colors duration-300";
-                return (
-                  <li key={r.label}>
-                    {r.href ? (
-                      <a
-                        href={r.href}
-                        target={r.external ? "_blank" : undefined}
-                        rel={r.external ? "noreferrer" : undefined}
-                        className={`${cls} group hover:bg-white hover:px-4 hover:text-ink`}
-                      >
-                        {inner}
-                      </a>
-                    ) : (
-                      <div className={cls}>{inner}</div>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="relative mx-auto flex aspect-[5/4] w-full max-w-xl items-end justify-center overflow-hidden rounded-[2rem] bg-white">
+              <span className="absolute left-5 top-5 rounded-full bg-ink px-4 py-2 font-display text-base font-extrabold tracking-[-0.02em] text-white sm:left-7 sm:top-7 sm:text-xl">
+                Say hi! 👋
+              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/loader.png" alt="" draggable={false} className="h-[88%] w-auto max-w-none object-contain" />
+            </div>
           </Reveal>
         </div>
 
