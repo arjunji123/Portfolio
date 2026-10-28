@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import photo from "../public/arjun.jpg";
-import child from "../public/arjun-child.png";
 
 const SIZE = 180; // blob diameter in px
 const spring = { stiffness: 170, damping: 22, mass: 0.6 };
@@ -51,7 +48,9 @@ export default function HoverPhoto() {
         onPointerMove={move}
         onPointerLeave={() => grow.set(0)}
       >
-        <Image src={photo} alt="Arjun Singh Naruka" className="h-full w-full object-cover grayscale" />
+        {/* plain <img>: works on any host (no /_next/image optimiser needed) */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/arjun.jpg" alt="Arjun Singh Naruka" className="h-full w-full object-cover grayscale" />
 
         <motion.div
           aria-hidden
@@ -59,7 +58,8 @@ export default function HoverPhoto() {
           style={{ x: bx, y: by, scale: grow, width: SIZE, height: SIZE }}
         >
           <motion.div className="absolute left-0 top-0" style={{ x: ix, y: iy, width: area.w, height: area.h }}>
-            <Image src={child} alt="" className="h-full w-full object-cover" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/arjun-child.jpg" alt="" className="h-full w-full object-cover" />
           </motion.div>
         </motion.div>
       </div>
