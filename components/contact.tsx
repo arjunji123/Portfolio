@@ -19,6 +19,8 @@ const pill = (on: boolean) =>
 const field =
   "w-full border border-white/30 bg-transparent outline-none transition placeholder:text-white/35 focus:border-white";
 
+const short = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "");
+
 export default function Contact() {
   const time = useClock();
   const [topic, setTopic] = useState<string>("");
@@ -35,35 +37,68 @@ export default function Contact() {
       message.trim(),
     ].join("\n");
 
-  const links = [
-    { name: "LinkedIn", href: profile.linkedin },
-    { name: "GitHub", href: profile.github },
-    { name: "Resume", href: profile.resume },
+  // the quick-reach list on the right of the heading
+  const rows: { label: string; value: string; href?: string; external?: boolean }[] = [
+    { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+    { label: "LinkedIn", value: short(profile.linkedin), href: profile.linkedin, external: true },
+    { label: "GitHub", value: short(profile.github), href: profile.github, external: true },
+    { label: "Resume", value: "Download PDF", href: profile.resume, external: true },
+    { label: "Based in", value: `${profile.location}${time ? ` · ${time} IST` : ""}` },
   ];
 
   return (
     <section id="contact" className="bg-ink text-white">
       <div className="mx-auto max-w-[1600px] px-5 pb-8 pt-24 sm:px-8 sm:pt-36">
-        <Reveal>
-          <p className="label mb-8 opacity-60 sm:mb-12">(06) Contact</p>
-          <h2 className="display text-[clamp(3rem,12vw,12rem)]">
-            Let&apos;s
-            <br />
-            talk.
-          </h2>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
-            A role, a project, a question or just a hello — send a note and I&apos;ll reply as soon as I can.
-          </p>
-          <a
-            href={`mailto:${profile.email}`}
-            className="mt-8 inline-block break-all border-b border-white/40 pb-1 font-display text-xl font-medium tracking-[-0.03em] transition hover:border-white sm:text-3xl"
-          >
-            {profile.email}
-          </a>
-        </Reveal>
+        <div className="grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-20">
+          <Reveal>
+            <p className="label mb-8 opacity-60 sm:mb-12">(06) Contact</p>
+            <h2 className="display text-[clamp(3rem,12vw,12rem)]">
+              Let&apos;s
+              <br />
+              talk.
+            </h2>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/70">
+              A role, a project, a question or just a hello — send a note and I&apos;ll reply as soon as I can.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ul className="border-b border-white/20">
+              {rows.map((r) => {
+                const inner = (
+                  <>
+                    <span className="label opacity-60">{r.label}</span>
+                    <span className="break-all text-right font-display text-lg font-medium tracking-[-0.02em] sm:text-xl">
+                      {r.value}
+                      {r.href && <span className="ml-2 inline-block transition-transform group-hover:translate-x-1">↗</span>}
+                    </span>
+                  </>
+                );
+                const cls =
+                  "flex items-baseline justify-between gap-6 border-t border-white/20 px-1 py-4 transition-colors duration-300";
+                return (
+                  <li key={r.label}>
+                    {r.href ? (
+                      <a
+                        href={r.href}
+                        target={r.external ? "_blank" : undefined}
+                        rel={r.external ? "noreferrer" : undefined}
+                        className={`${cls} group hover:bg-white hover:px-4 hover:text-ink`}
+                      >
+                        {inner}
+                      </a>
+                    ) : (
+                      <div className={cls}>{inner}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </Reveal>
+        </div>
 
         <form
-          className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-20"
+          className="mt-20 grid gap-10 lg:grid-cols-2 lg:gap-20"
           action={async (formData) => {
             if (!message.trim()) {
               toast.error("Write a short message first.");
@@ -92,9 +127,9 @@ export default function Contact() {
             setName("");
           }}
         >
-          <div className="space-y-8">
+          <div className="space-y-6">
             <div>
-              <p className="label mb-3 opacity-60">01 — What&apos;s it about?</p>
+              <p className="label mb-3 opacity-60">What&apos;s it about?</p>
               <div className="flex flex-wrap gap-2">
                 {topics.map((t) => (
                   <button type="button" key={t} onClick={() => setTopic(topic === t ? "" : t)} className={pill(topic === t)}>
@@ -103,21 +138,6 @@ export default function Contact() {
                 ))}
               </div>
             </div>
-
-            <div className="space-y-4 border-t border-white/20 pt-8">
-              <p className="label opacity-60">Elsewhere</p>
-              <div className="flex flex-wrap gap-x-8 gap-y-3 font-display text-xl font-medium uppercase tracking-tight">
-                {links.map((l) => (
-                  <a key={l.name} href={l.href} target="_blank" rel="noreferrer" className="transition hover:opacity-60">
-                    {l.name} ↗
-                  </a>
-                ))}
-              </div>
-              <p className="text-white/60">{profile.location}</p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -135,12 +155,15 @@ export default function Contact() {
               autoComplete="email"
               className={`${field} h-14 rounded-full px-6`}
             />
+          </div>
+
+          <div className="flex flex-col gap-4">
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               maxLength={3000}
               placeholder="Tell me a little about what you have in mind…"
-              className={`${field} h-40 resize-none rounded-2xl p-5`}
+              className={`${field} min-h-[12rem] flex-1 resize-none rounded-2xl p-5`}
             />
             <SubmitBtn />
           </div>
@@ -150,11 +173,12 @@ export default function Contact() {
           <p className="label group opacity-60">
             Arjun <SSingh /> Naruka · Jaipur{time && ` · ${time} IST`}
           </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 whitespace-nowrap font-display text-base font-medium uppercase tracking-tight sm:text-lg">
-            <a href="#home" className="transition hover:opacity-60">
-              Back to top ↑
-            </a>
-          </div>
+          <a
+            href="#home"
+            className="font-display text-base font-medium uppercase tracking-tight transition hover:opacity-60 sm:text-lg"
+          >
+            Back to top ↑
+          </a>
         </footer>
       </div>
     </section>
