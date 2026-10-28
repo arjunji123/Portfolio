@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import Hero from "@/components/hero";
 import Marquee from "@/components/marquee";
 import About from "@/components/about";
@@ -10,12 +8,9 @@ import Skills from "@/components/skills";
 import Contact from "@/components/contact";
 
 export default function Home() {
-  // public/hero.png (a generated render) wins if present, otherwise the bundled hero.svg illustration
-  const heroSrc = fs.existsSync(path.join(process.cwd(), "public", "hero.png")) ? "/hero.png" : "/loader.png";
-
   return (
     <main>
-      <Hero src={heroSrc} />
+      <Hero src="/hero.png" />
       <Marquee />
       <About />
       <Work />
