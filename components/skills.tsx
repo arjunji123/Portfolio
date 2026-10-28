@@ -1,52 +1,36 @@
-"use client";
-
 import React from "react";
-import SectionHeading from "./section-heading";
-import { skillsData } from "@/lib/data";
-import { useSectionInView } from "@/lib/hooks";
-import { motion } from "framer-motion";
-
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: 100,
-  },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.05 * index,
-    },
-  }),
-};
+import { skillGroups } from "@/lib/data";
+import Reveal from "./reveal";
 
 export default function Skills() {
-  const { ref } = useSectionInView("Skills");
-
   return (
-    <section
-      id="skills"
-      ref={ref}
-      className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
-    >
-      <SectionHeading>My skills</SectionHeading>
-      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-        {skillsData.map((skill, index) => (
-          <motion.li
-            className="bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80"
-            key={index}
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{
-              once: true,
-            }}
-            custom={index}
-          >
-            {skill}
-          </motion.li>
+    <section id="skills" className="section">
+      <Reveal className="mb-14 sm:mb-20">
+        <p className="label mb-8 sm:mb-12">(05) Skills</p>
+        <h2 className="display text-[clamp(3rem,11vw,11rem)]">
+          Tools I
+          <br />
+          build with.
+        </h2>
+      </Reveal>
+
+      <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        {skillGroups.map((g) => (
+          <Reveal key={g.title}>
+            <p className="label border-b border-ink pb-3">{g.title}</p>
+            <ul>
+              {g.items.map((it) => (
+                <li
+                  key={it}
+                  className="border-b border-ink/15 py-3 font-display text-xl font-medium tracking-[-0.03em] transition-[padding] duration-300 hover:pl-3 sm:text-2xl"
+                >
+                  {it}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

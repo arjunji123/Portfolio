@@ -1,21 +1,20 @@
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
-import type { SectionName } from "./types";
+import { useEffect, useState } from "react";
 
-export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
-  const { ref, inView } = useInView({
-    threshold,
-  });
-  const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
+/** Live Jaipur (IST) clock, e.g. "10:37 AM". Empty until mounted to avoid hydration mismatch. */
+export function useClock() {
+  const [time, setTime] = useState("");
 
   useEffect(() => {
-    if (inView && Date.now() - timeOfLastClick > 1000) {
-      setActiveSection(sectionName);
-    }
-  }, [inView, setActiveSection, timeOfLastClick, sectionName]);
+    const fmt = () =>
+      new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "numeric",
+        minute: "2-digit",
+      });
+    setTime(fmt());
+    const id = setInterval(() => setTime(fmt()), 15_000);
+    return () => clearInterval(id);
+  }, []);
 
-  return {
-    ref,
-  };
+  return time;
 }

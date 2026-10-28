@@ -5,8 +5,6 @@ import { Resend } from "resend";
 import { validateString, getErrorMessage } from "@/lib/utils";
 import ContactFormEmail from "@/email/contact-form-email";
 
-const resend = new Resend("re_K37qWerx_MdXxLaXqQqtR8VDBnqrPSRkW");
-
 export const sendEmail = async (formData: FormData) => {
   const senderEmail = formData.get("senderEmail");
   const message = formData.get("message");
@@ -23,8 +21,18 @@ export const sendEmail = async (formData: FormData) => {
     };
   }
 
+  // no key configured (e.g. fresh checkout): don't crash, let the client fall back to a mailto link
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return {
+      error: "Email service isn't set up yet.",
+      noKey: true,
+    };
+  }
+
   let data;
   try {
+    const resend = new Resend(apiKey);
     data = await resend.emails.send({
       from: "Contact Form <portfolio@resend.dev>",
       to: "singhnarukaarjun@gmail.com",
