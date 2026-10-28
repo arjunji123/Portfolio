@@ -62,7 +62,7 @@ export default function About() {
                 ["Based in", "Jaipur, India · works remotely"],
                 ["Currently", "Full Stack Developer at LookoutAI, Toronto (remote)"],
                 ["Focus", "Web, mobile and AI products — front to back"],
-                ["Core stack", "Next.js · React · TypeScript · Node.js · Django · PostgreSQL"],
+                ["Core stack", "Next.js · React · TypeScript · Node.js · Python · Django · MongoDB · PostgreSQL"],
               ].map(([k, v]) => (
                 <div key={k}>
                   <dt className="label text-ink/50">{k}</dt>

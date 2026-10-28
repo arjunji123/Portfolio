@@ -136,9 +136,9 @@ export const journeyData = [
     org: "LookoutAI · Toronto, Canada (Remote)",
     story: [
       "Building an AI-powered talent acquisition and assessment platform that automates candidate screening and streamlines the hiring lifecycle with intelligent filters and workspace integrations.",
-      "Also building Wurkn, an employee feedback and sentiment analytics platform where feedback stays anonymous.",
+      "On the backend I work in Python with MongoDB as the database, and I'm also building Wurkn, an employee feedback and sentiment analytics platform where feedback stays anonymous.",
     ],
-    tech: ["Next.js", "TypeScript", "Redux Toolkit", "Django", "OpenAI"],
+    tech: ["Next.js", "TypeScript", "Redux Toolkit", "Python", "MongoDB", "Django", "OpenAI"],
     href: null,
     current: true,
   },
@@ -151,7 +151,7 @@ export const projectsData = [
     kind: "AI talent acquisition",
     description:
       "An AI-powered platform that automates candidate screening and assessment, with intelligent filters and workspace integrations like Slack and MS Teams to run the hiring process end to end.",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Redux Toolkit", "Framer Motion", "Firebase"],
+    tags: ["Next.js", "TypeScript", "Tailwind", "Redux Toolkit", "Framer Motion", "Python", "MongoDB", "Firebase"],
     href: null,
   },
   {
@@ -238,7 +238,7 @@ export const skillGroups = [
 ] as const;
 
 export const marquee = [
-  "React", "React Native", "Next.js", "TypeScript", "Node.js", "NestJS", "Django", "Tailwind",
+  "React", "React Native", "Next.js", "TypeScript", "Node.js", "NestJS", "Python", "Django", "Tailwind",
   "MongoDB", "PostgreSQL", "MySQL", "Redis", "Docker", "AWS", "OpenAI", "Firebase", "Socket.io", "Stripe",
 ] as const;
 
