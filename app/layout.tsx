@@ -10,7 +10,7 @@ const display = Inter_Tight({ subsets: ["latin"], weight: ["300", "500", "800"],
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata = {
-  title: "Arjun S Naruka — Full Stack & Mobile Developer",
+  title: "Arjun S Naruka — Full Stack Developer",
   description:
     "Full stack developer who takes products from idea to production — frontend, backend, databases, mobile apps and deployment. Currently at LookoutAI.",
 };
