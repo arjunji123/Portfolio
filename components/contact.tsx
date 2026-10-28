@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import toast from "react-hot-toast";
 import { sendEmail } from "@/actions/sendEmail";
 import { profile } from "@/lib/data";
@@ -21,6 +22,18 @@ const field =
 
 export default function Contact() {
   const time = useClock();
+  const videoBox = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoInView = useInView(videoBox, { amount: 0.3 });
+
+  // only play the loop while the card is on screen
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (videoInView) v.play().catch(() => {});
+    else v.pause();
+  }, [videoInView]);
+
   const [topic, setTopic] = useState<string>("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -82,12 +95,23 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="relative mx-auto aspect-[5/4] w-full max-w-xl overflow-hidden rounded-[2rem] bg-white">
+            <div ref={videoBox} className="relative mx-auto aspect-[5/4] w-full max-w-xl overflow-hidden rounded-[2rem] bg-white">
               <span className="absolute left-5 top-5 rounded-full bg-ink px-4 py-2 font-display text-base font-extrabold tracking-[-0.02em] text-white sm:left-7 sm:top-7 sm:text-xl">
                 Say hi! 👋
               </span>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/loader.png" alt="" draggable={false} className="absolute bottom-0 left-1/2 h-[88%] w-auto max-w-none -translate-x-1/2 object-contain" />
+              {/* same clip as the loader; multiply melts its white into the card */}
+              <video
+                ref={videoRef}
+                src="/loader.mp4"
+                poster="/loader-poster.jpg"
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden
+                className="absolute inset-0 h-full w-full object-cover mix-blend-multiply"
+                style={{ filter: "brightness(1.05) contrast(1.06)" }}
+              />
             </div>
           </Reveal>
         </div>
