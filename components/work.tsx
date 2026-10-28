@@ -13,7 +13,15 @@ function Row({ p, i }: { p: Project; i: number }) {
           {p.title}
           {p.href && <span className="ml-3 align-top text-[0.4em]">↗</span>}
         </h3>
-        <span className="label col-start-2 mt-3 opacity-60 md:col-start-3 md:mt-0 md:text-right">{p.kind}</span>
+        <span className="label col-start-2 mt-3 opacity-60 md:col-start-3 md:mt-0 md:text-right">
+          {p.kind}
+          {p.meta && (
+            <>
+              <br />
+              <span className="opacity-70">{p.meta}</span>
+            </>
+          )}
+        </span>
       </div>
 
       {/* expands on hover for desktop, always open on touch / small screens */}

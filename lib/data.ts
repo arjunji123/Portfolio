@@ -20,14 +20,12 @@ export const profile = {
     "Frontend · Backend · Databases",
     "Mobile App Developer",
     "DevOps & Deployment",
-    "Freelancer who ships",
   ],
 };
 
 export const stats = [
   { value: 2, suffix: "+", label: "Years working full-time" },
-  { value: 4, suffix: "", label: "Companies worked with" },
-  { value: 2, suffix: " yrs", label: "Freelancing through college" },
+  { value: 4, suffix: "", label: "Companies, from intern to engineer" },
   { value: 7, suffix: "", label: "Projects featured here" },
 ] as const;
 
@@ -48,7 +46,7 @@ export const platforms = [
     id: "mobile",
     label: "Mobile",
     title: "Apps in your pocket",
-    text: "Mobile apps delivered for clients while I was still in college — one codebase for iOS and Android, wired to the same APIs as the web product.",
+    text: "Cross-platform mobile apps — one codebase for iOS and Android, wired to the same APIs as the web product.",
     points: [
       "React Native apps for iOS and Android from a single codebase",
       "Shared API layer, state logic and types with the web app",
@@ -149,6 +147,7 @@ export const journeyData = [
 export const projectsData = [
   {
     title: "LookoutAI",
+    meta: "LookoutAI · 2026 — now",
     kind: "AI talent acquisition",
     description:
       "An AI-powered platform that automates candidate screening and assessment, with intelligent filters and workspace integrations like Slack and MS Teams to run the hiring process end to end.",
@@ -157,6 +156,7 @@ export const projectsData = [
   },
   {
     title: "Wurkn",
+    meta: "LookoutAI · 2026 — now",
     kind: "Employee feedback & sentiment",
     description:
       "Employees share feedback anonymously; companies see sentiment trends, cultural insights and department-level analytics on dashboards, without ever seeing who said what.",
@@ -165,6 +165,7 @@ export const projectsData = [
   },
   {
     title: "Shiplo & Heale",
+    meta: "Sturen Tech · 2025",
     kind: "Shipment & transport management",
     description:
       "A shipment platform to manage inventory, create shipping labels and get real-time quotes. I built the interface and wired it to the REST APIs with TanStack Query and Zustand; labels and rates run on ShipEngine, payments on Stripe.",
@@ -173,6 +174,7 @@ export const projectsData = [
   },
   {
     title: "Aignite",
+    meta: "",
     kind: "AI mock interviews",
     description:
       "Practise interviews with an AI interviewer and get real-time feedback, so the real one feels familiar.",
@@ -181,7 +183,8 @@ export const projectsData = [
   },
   {
     title: "Telegram Support Bot",
-    kind: "Automation · Digital Future Web Solutions",
+    meta: "Digital Future Web Solutions · 2024 — 25",
+    kind: "Support automation",
     description:
       "A Telegram bot that handles customer support automatically, built alongside a scalable e-commerce platform with RESTful APIs and an optimised MySQL database.",
     tags: ["Node.js", "Telegram Bot API", "MySQL", "REST APIs"],
@@ -189,15 +192,17 @@ export const projectsData = [
   },
   {
     title: "Freelance Mobile Apps",
-    kind: "Mobile · Client work",
+    meta: "During college",
+    kind: "Mobile apps",
     description:
-      "Mobile apps built for clients during college — designed, connected to a backend and deployed end to end.",
+      "Mobile apps I built during college — designed, connected to a backend and deployed end to end.",
     tags: ["React Native", "Node.js", "Databases", "Deployment"],
     href: null,
   },
   {
     title: "ShopHub",
-    kind: "E-commerce · My first React project",
+    meta: "Dotsquares · 2023",
+    kind: "E-commerce · my first React project",
     description:
       "A frontend-only e-commerce storefront I built at Dotsquares while learning React. Where it all started.",
     tags: ["React", "JavaScript", "CSS", "Netlify"],

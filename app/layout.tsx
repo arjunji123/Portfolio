@@ -12,7 +12,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 export const metadata = {
   title: "Arjun S Naruka — Full Stack Developer",
   description:
-    "Full stack developer who takes products from idea to production — frontend, backend, databases, mobile apps and deployment. Currently at LookoutAI.",
+    "Full stack developer from Jaipur building web, mobile and AI products with Next.js, React, TypeScript, Node.js and Django. Currently at LookoutAI.",
 };
 
 export default function RootLayout({

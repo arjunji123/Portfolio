@@ -110,15 +110,28 @@ export default function Hero({ src }: { src: string }) {
         <span className="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
       </motion.a>
 
-      <motion.p
-        className="absolute left-5 right-5 top-24 z-20 max-w-xs text-sm leading-snug md:bottom-8 md:left-auto md:right-8 md:top-auto md:max-w-[15rem] md:text-base"
+      <motion.div
+        className="absolute left-5 right-5 top-24 z-20 max-w-xs md:bottom-8 md:left-auto md:right-8 md:top-auto md:max-w-[15rem]"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: D + 0.6, duration: 0.8 }}
       >
-        I build full-stack products — AI tools, web apps and mobile apps — and take them from first idea to production. Currently at LookoutAI,
-        working remotely from {profile.location.split(",")[0]}.
-      </motion.p>
+        <p className="text-sm leading-snug md:text-base">
+          I build full-stack products — AI tools, web apps and mobile apps — and take them from first idea to production. Currently at LookoutAI,
+          working remotely from {profile.location.split(",")[0]}.
+        </p>
+        <p className="label mt-3 flex flex-wrap gap-x-4 gap-y-1">
+          <a href={profile.resume} target="_blank" rel="noreferrer" className="underline underline-offset-4 transition hover:opacity-60">
+            Resume ↗
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" className="underline underline-offset-4 transition hover:opacity-60">
+            LinkedIn ↗
+          </a>
+          <a href={profile.github} target="_blank" rel="noreferrer" className="underline underline-offset-4 transition hover:opacity-60">
+            GitHub ↗
+          </a>
+        </p>
+      </motion.div>
     </section>
   );
 }

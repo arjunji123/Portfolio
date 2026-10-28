@@ -44,7 +44,7 @@ export default function About() {
         </Reveal>
 
         <div className="flex flex-col justify-between gap-12">
-          <Reveal className="grid grid-cols-2 gap-y-10 sm:grid-cols-4">
+          <Reveal className="grid grid-cols-2 gap-y-10 sm:grid-cols-3">
             {stats.map((s) => (
               <div key={s.label}>
                 <p className="font-display text-6xl font-light tracking-[-0.06em] sm:text-7xl">
@@ -54,6 +54,22 @@ export default function About() {
                 <p className="label mt-2 max-w-[10rem] text-ink/50">{s.label}</p>
               </div>
             ))}
+          </Reveal>
+
+          <Reveal>
+            <dl className="grid gap-x-8 gap-y-6 border-t border-ink/15 pt-6 sm:grid-cols-2">
+              {[
+                ["Based in", "Jaipur, India · works remotely"],
+                ["Currently", "Full Stack Developer at LookoutAI, Toronto (remote)"],
+                ["Focus", "Web, mobile and AI products — front to back"],
+                ["Core stack", "Next.js · React · TypeScript · Node.js · Django · PostgreSQL"],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <dt className="label text-ink/50">{k}</dt>
+                  <dd className="mt-1.5 font-display text-lg font-medium leading-snug tracking-[-0.02em]">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </Reveal>
 
           <Reveal className="border-t border-ink/15 pt-6">

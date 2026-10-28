@@ -14,7 +14,7 @@ export default function SubmitBtn() {
         <span className="h-5 w-5 animate-spin rounded-full border-b-2 border-ink" />
       ) : (
         <>
-          Send brief
+          Send message
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </>
       )}

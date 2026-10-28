@@ -6,11 +6,11 @@ export default function Services() {
   return (
     <section id="services" className="section">
       <Reveal className="mb-14 sm:mb-20">
-        <p className="label mb-8 sm:mb-12">(03) What I do</p>
+        <p className="label mb-8 sm:mb-12">(03) Expertise</p>
         <h2 className="display text-[clamp(3rem,11vw,11rem)]">
-          One developer.
+          Every layer
           <br />
-          Every layer.
+          of the stack.
         </h2>
       </Reveal>
 
